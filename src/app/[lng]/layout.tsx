@@ -4,8 +4,16 @@ import "./globals.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { dir } from "i18next";
 
 import CustomPrimeReactProvider from "~/components/providers/CustomPrimeReactProvider";
+import { languages } from "~/i18n/settings";
+import TheMainFooter from "~/components/TheMainFooter";
+import { Languages } from "~/interfaces/i18n.interface";
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +24,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lng },
 }: Readonly<{
   children: React.ReactNode;
+  params: {
+    lng: Languages;
+  };
 }>) {
+  console.log('lng :>> ', lng);
+
   return (
-    <html lang="en">
+    <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>
-        <CustomPrimeReactProvider>{children}</CustomPrimeReactProvider>
+        <CustomPrimeReactProvider>
+          {children}
+          <TheMainFooter lng={lng} />
+        </CustomPrimeReactProvider>
       </body>
     </html>
   );

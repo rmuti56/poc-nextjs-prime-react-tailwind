@@ -3,8 +3,12 @@ import { Calendar } from "primereact/calendar";
 import { Divider } from "primereact/divider";
 import { InputText } from "primereact/inputtext";
 import { Panel } from "primereact/panel";
+import { useTranslation } from "~/i18n";
+import { PagePropWithParams } from "~/interfaces/i18n.interface";
 
-export default function Home() {
+export default async function Home({ params: { lng } }: PagePropWithParams) {
+  const { t } = await useTranslation(lng);
+
   return (
     <main className="container mx-auto py-4">
       <div className="flex gap-2">
@@ -16,7 +20,7 @@ export default function Home() {
       <Divider />
       <InputText />
       <Divider />
-      <Panel header="Header">test</Panel>
+      <Panel header={t("title", "common")}>test</Panel>
     </main>
   );
 }
