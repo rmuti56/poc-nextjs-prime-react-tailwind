@@ -3,9 +3,9 @@ import { ButtonProps } from "primereact/button";
 import { classNames } from "primereact/utils";
 
 // example override default theme via pass through
-const appPassThrough: PrimeReactPTOptions = {
+const AppPassThrough: PrimeReactPTOptions = {
   panel: {
-    header: { className: "bg-primary" },
+    header: { className: "bg-primary text-white" },
   },
   button: {
     root: ({ props }: { props: ButtonProps }) => ({
@@ -22,4 +22,4 @@ const appPassThrough: PrimeReactPTOptions = {
   },
 };
 
-export default appPassThrough;
+export default AppPassThrough;

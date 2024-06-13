@@ -3,10 +3,10 @@ import { PrimeReactProvider } from "primereact/api";
 import { usePassThrough } from "primereact/passthrough";
 import Tailwind from "primereact/passthrough/tailwind";
 import { ReactNode } from "react";
-import appPassThrough from "~/theme";
+import AppPassThrough from "~/theme";
 
 const CustomPrimeReactProvider = ({ children }: { children: ReactNode }) => {
-  const customPassThrough = usePassThrough(Tailwind, appPassThrough, {
+  const customPassThrough = usePassThrough(Tailwind, AppPassThrough, {
     mergeSections: true,
     mergeProps: true,
   });
