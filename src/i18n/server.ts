@@ -4,9 +4,9 @@ import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 import { getOptions } from "./settings";
-import { Languages, Namespaces } from "~/interfaces/i18n.interface";
+import { LanguageKey, NamespaceKey } from "~/interfaces/i18n.interface";
 
-const initI18next = async (lng: Languages, ns: Namespaces) => {
+const initI18next = async (lng: LanguageKey, ns: NamespaceKey) => {
   const i18nInstance = createInstance();
   await i18nInstance
     .use(initReactI18next)
@@ -22,8 +22,8 @@ const initI18next = async (lng: Languages, ns: Namespaces) => {
 };
 
 export async function useTranslation(
-  lng: Languages,
-  ns: Namespaces = "common",
+  lng: LanguageKey,
+  ns: NamespaceKey = "common",
   options = { keyPrefix: "" }
 ) {
   const i18nextInstance = await initI18next(lng, ns);

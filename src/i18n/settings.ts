@@ -1,7 +1,7 @@
-import { Languages } from "~/interfaces/i18n.interface";
+import { LanguageKey } from "~/interfaces/i18n.interface";
 
 export const fallbackLng = "en";
-export const languages: Languages[] = [fallbackLng, "th"];
+export const languages: LanguageKey[] = [fallbackLng, "th"];
 export const defaultNS = "common";
 export const cookieName = "i18next";
 

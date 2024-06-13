@@ -8,8 +8,9 @@ import { dir } from "i18next";
 
 import CustomPrimeReactProvider from "~/components/providers/CustomPrimeReactProvider";
 import { languages } from "~/i18n/settings";
-import TheMainFooter from "~/components/TheMainFooter";
-import { Languages } from "~/interfaces/i18n.interface";
+import TheMainFooter from "~/components/layouts/TheMainFooter";
+import { LanguageKey } from "~/interfaces/i18n.interface";
+import TheMainHeader from "~/components/layouts/TheMainHeader";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -28,16 +29,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
   params: {
-    lng: Languages;
+    lng: LanguageKey;
   };
 }>) {
-  console.log('lng :>> ', lng);
-
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>
         <CustomPrimeReactProvider>
-          {children}
+          <TheMainHeader />
+          <main className="container mx-auto py-4">{children}</main>
           <TheMainFooter lng={lng} />
         </CustomPrimeReactProvider>
       </body>
